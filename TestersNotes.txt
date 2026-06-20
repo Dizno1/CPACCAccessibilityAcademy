@@ -1,0 +1,74 @@
+Open Door Accessibility Academy
+
+Tester Notes
+
+Thank you for reviewing this test build of the Open Door Accessibility Academy.
+
+IMPORTANT
+
+This is a development build and is not a finished product.
+
+For this testing cycle, please focus only on:
+
+Domain 1 - Disability Models and Disability Experience
+Domain 2 - Disability Demographics and Diversity
+
+Domains 3 through 5 are currently placeholders and are not ready for formal testing.
+
+Feedback Requested
+
+Learning Experience
+
+Does the content feel like a lesson or a collection of study notes?
+Did the examples help explain concepts?
+Were lessons too short, too long, or about right?
+Were there areas that felt confusing or incomplete?
+
+Navigation
+
+Was it easy to move through lessons?
+Was it easy to move between parts of a lesson?
+Was it clear how to continue to the next lesson?
+Did Reinforce, Practice, and Challenge feel like part of the flow?
+Did you ever feel lost within the application?
+
+Academy Library
+
+Were library resources useful?
+Were related topics helpful?
+Were you able to return to your lesson easily?
+What additional resources would you like to see?
+
+Notes and Progress
+
+Did note taking work as expected?
+Were note markers useful?
+Did progress indicators make sense?
+Did lesson completion feel clear?
+
+Accessibility
+
+Screen reader used:
+Browser used:
+Keyboard only:
+Other assistive technology used:
+
+Overall Impression
+
+What did you like most?
+What frustrated you?
+What would make this more useful as a learning platform?
+Would you use this as part of CPACC preparation?
+At what point would you feel comfortable recommending this Academy to another learner?
+
+Additional Comments
+
+__________________________________________________
+
+__________________________________________________
+
+__________________________________________________
+
+Thank you for helping improve the Open Door Accessibility Academy.
+
+Open Door Design
