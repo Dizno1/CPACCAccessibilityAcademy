@@ -252,7 +252,9 @@ function seededRandom(seed){
     t^=t+Math.imul(t^(t>>>7),t|61);
     return ((t^(t>>>14))>>>0)/4294967296;
 }
-function shuffledChoicesForQuestion(q,name,index){
+function questionArray(item){ return item && item.q ? item.q : item; }
+function shuffledChoicesForQuestion(item,name,index){
+    const q=questionArray(item);
     const choices=q[1].map((text,originalIndex)=>({text,originalIndex}));
     let seed=hashTextForQuestionShuffle(name+"|"+String(index)+"|"+q[0]);
     for(let i=choices.length-1;i>0;i--){
@@ -266,6 +268,36 @@ function shuffledChoicesForQuestion(q,name,index){
 }
 function buildQuestionBank(){
     if(data.lessonQuestionBank)return data.lessonQuestionBank;
+    const authoredBanks=[];
+    if(window.CPACC_DOMAIN_1_QUESTION_BANK && Array.isArray(window.CPACC_DOMAIN_1_QUESTION_BANK)){
+        authoredBanks.push.apply(authoredBanks, window.CPACC_DOMAIN_1_QUESTION_BANK.map(function(item){
+            return Object.assign({}, item, {domainIndex:0, lessonIndex:item.lessonIndex});
+        }));
+    }
+    if(window.CPACC_DOMAIN_2_QUESTION_BANK && Array.isArray(window.CPACC_DOMAIN_2_QUESTION_BANK)){
+        authoredBanks.push.apply(authoredBanks, window.CPACC_DOMAIN_2_QUESTION_BANK.map(function(item){
+            return Object.assign({}, item, {domainIndex:1, lessonIndex:item.lessonIndex});
+        }));
+    }
+    if(window.CPACC_DOMAIN_3_QUESTION_BANK && Array.isArray(window.CPACC_DOMAIN_3_QUESTION_BANK)){
+        authoredBanks.push.apply(authoredBanks, window.CPACC_DOMAIN_3_QUESTION_BANK.map(function(item){
+            return Object.assign({}, item, {domainIndex:2, lessonIndex:item.lessonIndex});
+        }));
+    }
+    if(window.CPACC_DOMAIN_4_QUESTION_BANK && Array.isArray(window.CPACC_DOMAIN_4_QUESTION_BANK)){
+        authoredBanks.push.apply(authoredBanks, window.CPACC_DOMAIN_4_QUESTION_BANK.map(function(item){
+            return Object.assign({}, item, {domainIndex:3, lessonIndex:item.lessonIndex});
+        }));
+    }
+    if(window.CPACC_DOMAIN_5_QUESTION_BANK && Array.isArray(window.CPACC_DOMAIN_5_QUESTION_BANK)){
+        authoredBanks.push.apply(authoredBanks, window.CPACC_DOMAIN_5_QUESTION_BANK.map(function(item){
+            return Object.assign({}, item, {domainIndex:4, lessonIndex:item.lessonIndex});
+        }));
+    }
+    if(authoredBanks.length){
+        data.lessonQuestionBank=authoredBanks;
+        return data.lessonQuestionBank;
+    }
     const bank=[];
     data.domains.forEach((domain,di)=>{
         domain.lessons.forEach((lesson,li)=>{
@@ -291,7 +323,7 @@ function activeQuestions(mode){
         if(mode==="practice")return item.domainIndex===state.domainIndex && item.lessonIndex<=state.lessonIndex;
         if(mode==="challenge")return item.domainIndex<state.domainIndex || (item.domainIndex===state.domainIndex && item.lessonIndex<=state.lessonIndex);
         return false;
-    }).map(item=>item.q);
+    });
     return items.length?items:[["No questions are available for this lesson yet.",["Return to the lesson","Reset progress","Open notes","Skip the course"],0]];
 }
 function clampQuestionIndexes(){
@@ -302,12 +334,14 @@ function clampQuestionIndexes(){
 
 function renderQuestion(id,name,qs,index){ 
     const c=document.getElementById(id); 
-    const q=qs[index]; 
+    const item=qs[index];
+    const q=questionArray(item); 
     const safeName=name.replace(/[^a-zA-Z0-9_-]/g,"");
     const questionId=safeName+"QuestionText";
     const choices=shuffledChoicesForQuestion(q,name,index);
     let html="";
     html+="<h3 id='"+questionId+"'>Question "+(index+1)+" of "+qs.length+"</h3>";
+    if(item && item.id){ html+="<p><strong>Question ID:</strong> "+escapeHtml(item.id)+". <strong>Difficulty:</strong> "+escapeHtml(item.difficulty||"Not tagged")+".</p>"; }
     html+="<p>"+escapeHtml(q[0])+"</p>";
     html+="<form><fieldset aria-labelledby='"+questionId+"'>";
     html+="<legend class='hidden'>Question "+(index+1)+" of "+qs.length+". "+escapeHtml(q[0])+"</legend>";
@@ -330,7 +364,7 @@ function focusQuestionHeading(name){
         setTimeout(()=>h.focus(),0);
     }
 }
-function checkQuestion(name,qs,index,feedbackId){ const checked=document.querySelector("input[name='"+name+"']:checked"); const f=document.getElementById(feedbackId); if(!checked){f.textContent="Select an answer before checking."; setStatus("Select an answer before checking."); return;} if(Number(checked.value)===qs[index][2]){f.textContent="Correct."; setStatus("Correct answer selected.");}else{f.textContent="Not quite. Review the lesson and try again."; setStatus("Answer checked. Review feedback.");}}
+function checkQuestion(name,qs,index,feedbackId){ const checked=document.querySelector("input[name='"+name+"']:checked"); const f=document.getElementById(feedbackId); const item=qs[index]; const q=questionArray(item); const explanation=item && item.explanation ? " Explanation: "+item.explanation : ""; if(!checked){f.textContent="Select an answer before checking."; setStatus("Select an answer before checking."); return;} if(Number(checked.value)===q[2]){f.textContent="Correct."+explanation; setStatus("Correct answer selected.");}else{f.textContent="Not quite. Review the lesson and try again."+explanation; setStatus("Answer checked. Review feedback.");}}
 function markCurrentLessonComplete(){
     const key=lessonKey();
     state.completedParts[key]=currentLesson().parts.map((p,i)=>i);

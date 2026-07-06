@@ -41,6 +41,11 @@
   "domain5/04-accessibility-standards-and-guidelines.js",
   "domain5/05-organizational-accessibility-and-procurement.js",
   "domain5/06-domain-5-review.js",
+  "domain1-question-bank.js",
+  "domain2-question-bank.js",
+  "domain3-question-bank.js",
+  "domain4-question-bank.js",
+  "domain5-question-bank.js",
   "course-loader.js"
 ];
   var current = document.currentScript && document.currentScript.src ? document.currentScript.src : '';
