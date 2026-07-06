@@ -1,0 +1,19 @@
+Tester Notes
+
+This build is intended for keyboard and screen reader testing.
+
+Primary testing areas
+
+- Navigation between Course Home, Library, Lesson, Reinforce, Practice, Challenge, and Progress
+- Heading structure
+- Button labels
+- Focus movement after activating controls
+- Study notes saving
+- Reinforce, Practice, and Challenge question behavior
+- Export Notes
+- Reset Progress
+
+Known development direction
+
+Domain 2 will be expanded into a comprehensive disability demographics and diversity curriculum.
+The CPACC Lab remains the question-heavy practice environment.

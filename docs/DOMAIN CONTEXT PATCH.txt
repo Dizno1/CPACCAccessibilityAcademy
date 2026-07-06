@@ -1,0 +1,14 @@
+Domain Context Patch
+
+Changed js/app.js only.
+
+What changed:
+- Course Home domain groups are now labelled sections.
+- Each domain heading has an id.
+- The first lesson button in each domain is labelled by both the domain heading and its own lesson title.
+- Later buttons are not labelled by the domain heading to avoid noisy repetition.
+
+Expected screen reader effect:
+- Heading navigation still reads each domain heading.
+- Form navigation gives domain context on the first lesson button in each domain group.
+- Subsequent lesson buttons remain concise.

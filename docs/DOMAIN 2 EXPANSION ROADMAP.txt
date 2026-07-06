@@ -1,0 +1,30 @@
+Domain 2 Expansion Roadmap
+
+Target sections
+
+1. Disability demographics and measurement
+2. Disability across the lifespan
+3. Blindness and low vision
+4. Deaf, hard of hearing, and DeafBlind experience
+5. Mobility and motor disabilities
+6. Speech disabilities
+7. Cognitive disabilities
+8. Learning disabilities
+9. Neurodiversity
+10. Mental health disabilities
+11. Chronic illness, pain, fatigue, and episodic disability
+12. Invisible disability, disclosure, and privacy
+13. Multiple disabilities and intersectionality
+14. Disability culture, identity, and language
+15. Education, employment, technology access, and social inclusion
+
+Question strategy
+
+Course:
+- modest lesson-linked reinforce, practice, and challenge questions
+
+CPACC Lab:
+- large question banks
+- scenario questions
+- sprint mode questions
+- randomized exam readiness practice

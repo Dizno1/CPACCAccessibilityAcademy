@@ -1,8 +1,8 @@
-Open Door Accessibility Academy
+CPACC Preparation Course
 
 Tester Notes
 
-Thank you for reviewing this test build of the Open Door Accessibility Academy.
+Thank you for reviewing this test build of the CPACC Preparation Course.
 
 IMPORTANT
 
@@ -32,7 +32,7 @@ Was it clear how to continue to the next lesson?
 Did Reinforce, Practice, and Challenge feel like part of the flow?
 Did you ever feel lost within the application?
 
-Academy Library
+Resource Library
 
 Were library resources useful?
 Were related topics helpful?
@@ -59,7 +59,7 @@ What did you like most?
 What frustrated you?
 What would make this more useful as a learning platform?
 Would you use this as part of CPACC preparation?
-At what point would you feel comfortable recommending this Academy to another learner?
+At what point would you feel comfortable recommending this course to another learner?
 
 Additional Comments
 
@@ -69,6 +69,6 @@ __________________________________________________
 
 __________________________________________________
 
-Thank you for helping improve the Open Door Accessibility Academy.
+Thank you for helping improve the CPACC Preparation Course.
 
-Open Door Design
+CPACC Preparation Course

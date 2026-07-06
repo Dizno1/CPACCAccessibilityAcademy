@@ -1,0 +1,3 @@
+Library Pass Notes
+
+Expanded the resource library to 81 reference articles. Rewired every lesson to lesson-specific related library topics. Added category labels, related topic links, and lesson associations for article pages. This pass does not yet replace the synthetic quiz generator with a full hand-authored exam bank.

@@ -1,0 +1,44 @@
+CPACC Course Multi-File Build
+
+Folder structure
+
+index.html
+Main page structure. This should stay mostly stable.
+
+css/styles.css
+Visual styling and focus indicators.
+
+data/cpacc-course-data.js
+Course curriculum, lessons, library content, and question pools.
+This is the main file to edit when expanding Domain 2, Domain 3, Domain 4, and Domain 5.
+
+js/app.js
+Application behavior, navigation, progress tracking, notes, quiz modes, and exports.
+
+docs/
+Project notes and tester instructions.
+
+Recommended workflow
+
+1. Edit curriculum in data/cpacc-course-data.js.
+2. Edit behavior in js/app.js.
+3. Edit layout only when needed in index.html.
+4. Keep launcher and README in the root folder for testers.
+
+Domain 2 next steps
+
+- Complete the full Domain 2 lesson sequence.
+- Add comprehensive disability category lessons.
+- Add lesson-linked reinforce, practice, and challenge questions.
+- Keep course lessons readable and human, not PowerPoint-style.
+- Keep CPACC Lab focused on large question banks and exam practice.
+
+
+Accessibility pattern added
+
+Course Home domain list:
+- Each domain is rendered as a labelled section.
+- Each domain heading receives a stable id.
+- The first lesson button in each domain uses aria-labelledby with the domain heading and lesson title.
+- Later lesson buttons keep short names to avoid excessive repetition.
+- This supports F navigation by giving screen reader users domain context once per group.

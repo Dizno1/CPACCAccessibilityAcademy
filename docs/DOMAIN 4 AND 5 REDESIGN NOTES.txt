@@ -1,0 +1,49 @@
+CPACC Preparation Course - Domain 4 and Domain 5 Redesign Notes
+
+Purpose
+This note records the revised instructional direction for Domains 4 and 5. Domains 1, 2, and 3 now use a richer instructional style with scenarios, professional perspective, common misconceptions, and CPACC exam focus. Domains 4 and 5 have been updated to match that style.
+
+Domain 4 revised lesson plan
+1. Assistive Technology Foundations
+2. Visual Access Technologies
+3. Communication and Interaction Technologies
+4. Alternative Input, Cognitive Supports, and Emerging Technologies
+5. Domain 4 Comprehensive Review
+
+Domain 4 instructional purpose
+Domain 4 should not read like a device inventory. It should teach how people use technology to access information, communicate, interact, and complete real tasks. The theme is user need plus assistive technology plus accessible design.
+
+Domain 5 revised lesson plan
+1. Accessibility Laws and Why They Exist
+2. Major U.S. Accessibility Laws
+3. Accessibility Standards
+4. Organizational Accessibility
+5. Domain 5 Comprehensive Review
+
+Domain 5 instructional purpose
+Domain 5 should not ask learners to memorize acronyms in isolation. It should teach the relationship between laws, standards, procurement, VPATs, accessibility statements, governance, training, remediation, and continuous improvement.
+
+Instructional lesson pattern
+1. Lesson Overview
+2. Opening Scenario
+3. Core Learning
+4. User Experience Spotlight
+5. Real World Examples
+6. Professional Perspective
+7. Accessibility Implications
+8. Common Misconceptions
+9. CPACC Exam Focus
+10. Lesson Summary
+
+Review lesson pattern
+1. Review Overview
+2. Key Concepts Across the Domain
+3. Connecting the Lessons
+4. Professional Practice Scenarios
+5. Common Misconceptions Revisited
+6. CPACC Exam Focus
+7. Challenge Questions
+8. Domain Summary
+
+Future editing note
+If a lesson is added later, update data/cpacc-course-data.js so the new lesson file is loaded in the correct order. Then renumber any review lesson if needed and confirm the global lesson variables match the loader expectations.
