@@ -31,35 +31,75 @@ function pageTitleForView(v){
         return course+" - "+brand;
 
     if(v==="library")
-        return "Course Resource Library - "+course+" - "+brand;
+        return "Resource Library - "+brand;
 
     if(v==="article"){
         const heading=document.getElementById("articleHeading");
         const topic=heading && heading.textContent.trim() ? heading.textContent.trim() : "Resource Article";
-        return topic+" - "+course+" - "+brand;
+        return topic+" - "+brand;
     }
 
     if(v==="lesson")
-        return currentDomain().title+" - "+currentLesson().title+" - "+course+" - "+brand;
+        return currentLesson().title+" - "+brand;
 
     if(v==="reinforce")
-        return "Reinforce - "+currentLesson().title+" - "+course+" - "+brand;
+        return "Reinforce - "+currentLesson().title+" - "+brand;
 
     if(v==="practice")
-        return "Practice - "+currentLesson().title+" - "+course+" - "+brand;
+        return "Practice - "+currentLesson().title+" - "+brand;
 
     if(v==="challenge")
-        return "Challenge - "+currentLesson().title+" - "+course+" - "+brand;
+        return "Challenge - "+currentLesson().title+" - "+brand;
 
     if(v==="progress")
-        return "Progress And Notes - "+course+" - "+brand;
+        return "Progress And Notes - "+brand;
 
     return course+" - "+brand;
 }
+function pageHeadingForView(v){
+    const course="CPACC Preparation Course";
+
+    if(v==="home")
+        return course;
+
+    if(v==="library")
+        return "Resource Library";
+
+    if(v==="article"){
+        const heading=document.getElementById("articleHeading");
+        return heading && heading.textContent.trim() ? heading.textContent.trim() : "Resource Article";
+    }
+
+    if(v==="lesson")
+        return currentLesson().title;
+
+    if(v==="reinforce")
+        return "Reinforce - "+currentLesson().title;
+
+    if(v==="practice")
+        return "Practice - "+currentLesson().title;
+
+    if(v==="challenge")
+        return "Challenge - "+currentLesson().title;
+
+    if(v==="progress")
+        return "Progress And Notes";
+
+    return course;
+}
 function updateDocumentTitle(v){
-    document.title=pageTitleForView(v || state.view || "home");
+    const view=v || state.view || "home";
+    document.title=pageTitleForView(view);
     const h=document.getElementById("pageHeading");
-    if(h)h.textContent="CPACC Preparation Course";
+    if(h)h.textContent=pageHeadingForView(view);
+    const description=document.getElementById("pageDescription");
+    if(description){
+        if(view==="home"){
+            description.textContent="Prepare for CPACC with structured lessons, resource articles, lesson reinforcement, domain practice, and cumulative challenge review.";
+        }else{
+            description.textContent="";
+        }
+    }
 }
 function showView(v){
     if(v==="library") rememberLibraryReturn();
@@ -145,7 +185,7 @@ function updateCourseList(){
 
 function updateLesson(){
     const lesson=currentLesson(), part=currentPart();
-    document.getElementById("lessonHeading").textContent="Domain "+(state.domainIndex+1)+": "+currentDomain().title+". Lesson "+(state.lessonIndex+1)+": "+lesson.title;
+    document.getElementById("lessonHeading").textContent=currentDomain().title;
     document.getElementById("lessonPosition").textContent="Domain "+(state.domainIndex+1)+" of "+data.domains.length+". Lesson "+(state.lessonIndex+1)+" of "+currentDomain().lessons.length+". Part "+(state.partIndex+1)+" of "+lesson.parts.length+". "+part.title+".";
     const coursePct=percent(state.completedLessons.length,totalLessons());
     const domainPct=percent(completedLessonsInDomain(state.domainIndex),currentDomain().lessons.length);
@@ -169,7 +209,7 @@ function libraryLinks(text){
     const topics=currentLesson().libraryTopics || [];
     const matches=topics.map(t=>data.articles.find(a=>a.title===t)).filter(Boolean).slice(0,6);
     if(!matches.length)return "";
-    return "<h4>Related Reference Topics</h4><p class='help-text'>Optional reference material for this lesson part.</p><ul>"+matches.map(a=>"<li><a href='#' data-article='"+a.slug+"'>"+escapeHtml(a.title)+"</a></li>").join("")+"</ul>";
+    return "<h2>Related Reference Topics</h2><p class='help-text'>Optional reference material for this lesson part.</p><ul>"+matches.map(a=>"<li><a href='#' data-article='"+a.slug+"'>"+escapeHtml(a.title)+"</a></li>").join("")+"</ul>";
 }
 function updateLibrary(items){ const r=document.getElementById("libraryResults"); r.innerHTML=""; items.forEach(a=>{const li=document.createElement("li"); const b=document.createElement("button"); b.type="button"; b.textContent=a.title; b.setAttribute("data-article",a.slug); li.appendChild(b); r.appendChild(li);}); }
 function updateLibraryContext(){
