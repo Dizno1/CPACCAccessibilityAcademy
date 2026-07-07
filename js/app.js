@@ -26,6 +26,10 @@ function completedLessonsInDomain(di){ return data.domains[di].lessons.filter((l
 function pageTitleForView(v){
     const brand="Open Door Design";
     const course="CPACC Preparation Course";
+    const domain=currentDomain ? currentDomain() : null;
+    const lesson=currentLesson ? currentLesson() : null;
+    const domainTitle=domain ? domain.title : course;
+    const lessonTitle=lesson ? lesson.title : "Current Lesson";
 
     if(v==="home")
         return course+" - "+brand;
@@ -40,16 +44,16 @@ function pageTitleForView(v){
     }
 
     if(v==="lesson")
-        return currentLesson().title+" - "+brand;
+        return domainTitle+" - "+lessonTitle;
 
     if(v==="reinforce")
-        return "Reinforce - "+currentLesson().title+" - "+brand;
+        return "Reinforce - "+domainTitle+" - "+lessonTitle;
 
     if(v==="practice")
-        return "Practice - "+currentLesson().title+" - "+brand;
+        return "Practice - "+domainTitle+" - "+lessonTitle;
 
     if(v==="challenge")
-        return "Challenge - "+currentLesson().title+" - "+brand;
+        return "Challenge - "+domainTitle+" - "+lessonTitle;
 
     if(v==="progress")
         return "Progress And Notes - "+brand;
@@ -59,8 +63,8 @@ function pageTitleForView(v){
 function pageHeadingForView(v){
     const course="CPACC Preparation Course";
 
-    if(v==="home")
-        return course;
+    if(v==="lesson" || v==="reinforce" || v==="practice" || v==="challenge")
+        return currentDomain().title;
 
     if(v==="library")
         return "Resource Library";
@@ -69,21 +73,6 @@ function pageHeadingForView(v){
         const heading=document.getElementById("articleHeading");
         return heading && heading.textContent.trim() ? heading.textContent.trim() : "Resource Article";
     }
-
-    if(v==="lesson")
-        return currentLesson().title;
-
-    if(v==="reinforce")
-        return "Reinforce - "+currentLesson().title;
-
-    if(v==="practice")
-        return "Practice - "+currentLesson().title;
-
-    if(v==="challenge")
-        return "Challenge - "+currentLesson().title;
-
-    if(v==="progress")
-        return "Progress And Notes";
 
     return course;
 }
@@ -135,7 +124,7 @@ function updateCourseList(){
         domainSection.setAttribute("aria-labelledby", headingId);
         domainSection.className="card";
 
-        const h=document.createElement("h4"); 
+        const h=document.createElement("h2"); 
         h.id=headingId;
         h.textContent=domain.title; 
         domainSection.appendChild(h);
@@ -184,8 +173,10 @@ function updateCourseList(){
 }
 
 function updateLesson(){
-    const lesson=currentLesson(), part=currentPart();
-    document.getElementById("lessonHeading").textContent=currentDomain().title;
+    const lesson=currentLesson(), part=currentPart(), domain=currentDomain();
+    document.getElementById("lessonHeading").textContent=domain.title;
+    const lessonTitleHeading=document.getElementById("lessonTitleHeading");
+    if(lessonTitleHeading) lessonTitleHeading.textContent=lesson.title;
     document.getElementById("lessonPosition").textContent="Domain "+(state.domainIndex+1)+" of "+data.domains.length+". Lesson "+(state.lessonIndex+1)+" of "+currentDomain().lessons.length+". Part "+(state.partIndex+1)+" of "+lesson.parts.length+". "+part.title+".";
     const coursePct=percent(state.completedLessons.length,totalLessons());
     const domainPct=percent(completedLessonsInDomain(state.domainIndex),currentDomain().lessons.length);
@@ -209,7 +200,7 @@ function libraryLinks(text){
     const topics=currentLesson().libraryTopics || [];
     const matches=topics.map(t=>data.articles.find(a=>a.title===t)).filter(Boolean).slice(0,6);
     if(!matches.length)return "";
-    return "<h2>Related Reference Topics</h2><p class='help-text'>Optional reference material for this lesson part.</p><ul>"+matches.map(a=>"<li><a href='#' data-article='"+a.slug+"'>"+escapeHtml(a.title)+"</a></li>").join("")+"</ul>";
+    return "<h4>Related Reference Topics</h4><p class='help-text'>Optional reference material for this lesson part.</p><ul>"+matches.map(a=>"<li><a href='#' data-article='"+a.slug+"'>"+escapeHtml(a.title)+"</a></li>").join("")+"</ul>";
 }
 function updateLibrary(items){ const r=document.getElementById("libraryResults"); r.innerHTML=""; items.forEach(a=>{const li=document.createElement("li"); const b=document.createElement("button"); b.type="button"; b.textContent=a.title; b.setAttribute("data-article",a.slug); li.appendChild(b); r.appendChild(li);}); }
 function updateLibraryContext(){

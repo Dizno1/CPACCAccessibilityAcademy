@@ -12,7 +12,7 @@
 </div>
 <header>
 <a href="#main" data-view="home" class="homeLogo"><img src="dino_home_wave.png" alt="Dino waves you home"></a>
-<h1 id="pageHeading">CPACC Preparation Course - Open Door Design</h1>
+<p id="pageHeading" class="siteTitle">CPACC Preparation Course - Open Door Design</p>
 <p id="pageDescription">Prepare for CPACC with structured lessons, resource articles, lesson reinforcement, domain practice, and cumulative challenge review.</p>
 <div id="status" class="statusBox" role="status" aria-live="polite" aria-atomic="true">Ready.</div>
 <nav aria-label="Main navigation">
@@ -29,25 +29,25 @@
 </header>
 <main id="main">
 <section id="viewHome">
-<h2 id="homeHeading" tabindex="-1">Course Dashboard</h2>
+<h1 id="homeHeading" tabindex="-1">CPACC Preparation Course</h1>
 <div class="card">
 <h3>CPACC Preparation Course</h3>
 <p>This complete course includes five CPACC domains, integrated resource articles, study notes, and quiz modes that unlock after each lesson is completed.</p>
 <button type="button" data-view="lesson">Start Or Continue Course</button>
 <button type="button" data-view="library">Open Resources</button>
 </div>
-<h3>Domain And Lesson List</h3>
+<h2>Domain And Lesson List</h2>
 <div id="courseList"></div>
 </section>
 
 <section id="viewLibrary" class="hidden">
-<h2 id="libraryHeading" tabindex="-1">Resource Library</h2>
+<h1 id="libraryHeading" tabindex="-1">Resource Library</h1>
 <label for="librarySearch">Search library</label>
 <input id="librarySearch" type="search">
 <button type="button" id="searchLibrary">Search</button>
 <button type="button" id="showAllArticles">Show All Articles</button>
 <div class="controls">
-<h3>Resource Navigation</h3>
+<h2>Resource Navigation</h2>
 <p id="libraryContext">Opened from current course location.</p>
 <button type="button" id="returnToLessonFromLibrary">Return To Lesson</button>
 <button type="button" id="libraryHomeButton">All Resources</button>
@@ -57,10 +57,10 @@
 </section>
 
 <section id="viewArticle" class="hidden">
-<h2 id="articleHeading" tabindex="-1">Resource Article</h2>
+<h1 id="articleHeading" tabindex="-1">Resource Article</h1>
 <div id="articleContent" class="contentBox"></div>
 <div class="controls">
-<h3>Article Navigation</h3>
+<h2>Article Navigation</h2>
 <button type="button" id="returnToLessonFromArticle">Return To Lesson</button>
 <button type="button" data-view="library">Resource Library</button>
 <button type="button" data-view="home">Course Home</button>
@@ -68,18 +68,19 @@
 </section>
 
 <section id="viewLesson" class="hidden">
-<h2 id="lessonHeading" tabindex="-1">Current Lesson</h2>
+<h1 id="lessonHeading" tabindex="-1">Current Domain</h1>
+<h2 id="lessonTitleHeading">Current Lesson</h2>
 <p id="lessonPosition"></p>
 <div id="progressMeters" class="progressMeter" aria-live="polite"></div>
 <article id="partContent" class="contentBox"></article>
 <div class="controls">
-<h2>Lesson Part Controls</h2>
+<h3>Lesson Part Controls</h3>
 <button type="button" id="previousPart">Previous Part</button>
 <button type="button" id="nextPart">Next Part</button>
 <button type="button" id="markPartComplete">Mark Part Complete</button>
 </div>
 <div class="controls">
-<h2>Lesson Actions</h2>
+<h3>Lesson Actions</h3>
 <p>After marking the lesson complete, use Reinforce, Practice, or Challenge before continuing to the next lesson.</p>
 <button type="button" id="markLessonComplete">Mark Lesson Complete</button>
 <button type="button" data-view="reinforce" id="inlineReinforce">Reinforce Learning</button>
@@ -90,7 +91,7 @@
 <button type="button" data-view="home">Return To Course Home</button>
 </div>
 <section aria-labelledby="notesHeading">
-<h2 id="notesHeading">Study Notes</h2>
+<h3 id="notesHeading">Study Notes</h3>
 <p>Notes save silently. Use Insert Note Marker to place the current domain, lesson, and part on its own line before typing notes for that section.</p>
 <p><button type="button" id="insertNoteMarkerNearNotes">Insert Note Marker</button></p>
 <label for="notes">Notes for this course</label>
@@ -98,17 +99,23 @@
 </section>
 </section>
 
-<section id="viewReinforce" class="hidden"><h2 id="reinforceHeading" tabindex="-1">Reinforce Mode</h2><p>Use this mode after a lesson to strengthen recall before moving into practice questions.</p><div id="reinforceQuestion" class="card"></div><p><button type="button" id="checkReinforce">Check Answer</button><button type="button" id="nextReinforce">Next Reinforce Question</button><button type="button" data-view="lesson">Return To Lesson</button><button type="button" id="continueFromReinforce">Continue To Next Lesson</button></p><p id="reinforceFeedback" role="status" aria-live="polite"></p></section>
-<section id="viewPractice" class="hidden"><h2 id="practiceHeading" tabindex="-1">Practice Mode</h2><p>Use this mode to apply the lesson concepts before trying Challenge Mode.</p><div id="practiceQuestion" class="card"></div><p><button type="button" id="checkPractice">Check Answer</button><button type="button" id="nextPractice">Next Practice Question</button><button type="button" data-view="lesson">Return To Lesson</button><button type="button" id="continueFromPractice">Continue To Next Lesson</button></p><p id="practiceFeedback" role="status" aria-live="polite"></p></section>
-<section id="viewChallenge" class="hidden"><h2 id="challengeHeading" tabindex="-1">Challenge Mode</h2><p>Use this mode for harder scenario-based review before continuing.</p><div id="challengeQuestion" class="card"></div><p><button type="button" id="checkChallenge">Submit Challenge Answer</button><button type="button" id="nextChallenge">Next Challenge Question</button><button type="button" data-view="lesson">Return To Lesson</button><button type="button" id="continueFromChallenge">Continue To Next Lesson</button></p><p id="challengeFeedback" role="status" aria-live="polite"></p></section>
+<section id="viewReinforce" class="hidden"><h1 id="reinforceHeading" tabindex="-1">Reinforce Mode</h1><p>Use this mode after a lesson to strengthen recall before moving into practice questions.</p><div id="reinforceQuestion" class="card"></div><p><button type="button" id="checkReinforce">Check Answer</button><button type="button" id="nextReinforce">Next Reinforce Question</button><button type="button" data-view="lesson">Return To Lesson</button><button type="button" id="continueFromReinforce">Continue To Next Lesson</button></p><p id="reinforceFeedback" role="status" aria-live="polite"></p></section>
+<section id="viewPractice" class="hidden"><h1 id="practiceHeading" tabindex="-1">Practice Mode</h1><p>Use this mode to apply the lesson concepts before trying Challenge Mode.</p><div id="practiceQuestion" class="card"></div><p><button type="button" id="checkPractice">Check Answer</button><button type="button" id="nextPractice">Next Practice Question</button><button type="button" data-view="lesson">Return To Lesson</button><button type="button" id="continueFromPractice">Continue To Next Lesson</button></p><p id="practiceFeedback" role="status" aria-live="polite"></p></section>
+<section id="viewChallenge" class="hidden"><h1 id="challengeHeading" tabindex="-1">Challenge Mode</h1><p>Use this mode for harder scenario-based review before continuing.</p><div id="challengeQuestion" class="card"></div><p><button type="button" id="checkChallenge">Submit Challenge Answer</button><button type="button" id="nextChallenge">Next Challenge Question</button><button type="button" data-view="lesson">Return To Lesson</button><button type="button" id="continueFromChallenge">Continue To Next Lesson</button></p><p id="challengeFeedback" role="status" aria-live="polite"></p></section>
 
 <section id="viewProgress" class="hidden">
-<h2 id="progressHeading" tabindex="-1">Progress And Notes</h2>
+<h1 id="progressHeading" tabindex="-1">Progress And Notes</h1>
 <div id="progressContent" class="statusBox"></div>
 <p><button type="button" id="exportNotes">Export Notes</button><button type="button" id="resetProgress">Reset Progress</button></p>
 </section>
 </main>
-<footer><h2>Maintenance Notes</h2><p>This application separates structure, styles, application logic, and data so lessons, resources, and exams can be maintained consistently.</p></footer>
+<footer>
+<h2>Contact</h2>
+<p>For course questions, accessibility feedback, or project updates, contact Open Door Design through the project contact page or repository contact information.</p>
+<h2>Maintenance Notes</h2>
+<p>This application separates structure, styles, application logic, and data so lessons, resources, and exams can be maintained consistently.</p>
+<p>&copy; 2026 Open Door Design. All rights reserved.</p>
+</footer>
 <script src="data/cpacc-course-data.js"></script>
 <script src="js/app.js"></script>
 </body>
