@@ -1,0 +1,21 @@
+Open Door Design Visual Standard Applied
+
+This application now follows the Open Door Design shared visual direction.
+
+Standards applied:
+
+- Green is the single brand accent color.
+- Blue is not used as a competing interface color.
+- Navigation, headings, and body text use very dark neutral text for strong readability.
+- Page background uses a soft warm off-white with a slight green tint.
+- Cards, status regions, controls, and lesson content use white or pale green surfaces.
+- Interactive controls use strong borders, visible hover states, and high-contrast text.
+- Keyboard focus uses a high-visibility gold outline with a dark support ring.
+- Disabled controls remain readable and do not rely on opacity alone.
+- Links are green, underlined, and visually distinct without relying on color alone.
+- The home link uses the Dino home image with concise alternative text.
+- The returned distribution package must not include the .git directory.
+
+Contrast target:
+
+The Academy should aim above WCAG AAA where practical. Normal text, navigation, buttons, links, and status content should use strong contrast rather than minimum passing contrast.
