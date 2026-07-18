@@ -112,7 +112,44 @@ function showView(v){
 }
 function focusPartHeading(){ const h=document.getElementById("currentPartHeading"); if(h) h.focus(); }
 function escapeHtml(t){ return String(t).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch])); }
-function textToHtml(t){ return t.split("\\n\\n").map(p=>"<p>"+escapeHtml(p)+"</p>").join(""); }
+function isSectionLabel(text){
+    const value=String(text).trim();
+    if(!value || value.length>80 || /[.!?;:]$/.test(value))return false;
+    const words=value.split(/\s+/);
+    if(words.length>9)return false;
+    const minorWords=new Set(["a","an","and","as","at","but","by","for","from","in","into","of","on","or","the","to","with"]);
+    return words.every((word,index)=>{
+        const clean=word.replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9]+$/g,"");
+        if(!clean)return true;
+        if(index>0 && minorWords.has(clean.toLowerCase()))return true;
+        return /^[A-Z0-9]/.test(clean);
+    });
+}
+function splitLongParagraph(text,maxLength=520){
+    const value=String(text).trim();
+    if(value.length<=maxLength)return [value];
+    const sentences=value.match(/[^.!?]+(?:[.!?]+["']?|$)/g) || [value];
+    const paragraphs=[];
+    let current="";
+    sentences.forEach(sentence=>{
+        const clean=sentence.trim();
+        if(!clean)return;
+        if(current && (current+" "+clean).length>maxLength){
+            paragraphs.push(current);
+            current=clean;
+        }else{
+            current=current ? current+" "+clean : clean;
+        }
+    });
+    if(current)paragraphs.push(current);
+    return paragraphs.length ? paragraphs : [value];
+}
+function textToHtml(t){
+    return String(t).split("\n\n").map(block=>block.trim()).filter(Boolean).map(block=>{
+        if(isSectionLabel(block))return "<h4>"+escapeHtml(block)+"</h4>";
+        return splitLongParagraph(block).map(paragraph=>"<p>"+escapeHtml(paragraph)+"</p>").join("");
+    }).join("");
+}
 function updateAll(){ updateCourseList(); updateLibrary(data.articles); updateLesson(); updateProgress(); updateLibraryContext(); clampQuestionIndexes(); renderQuestion("reinforceQuestion","reinforceAnswer",activeQuestions("reinforce"),state.reinforceIndex); renderQuestion("practiceQuestion","practiceAnswer",activeQuestions("practice"),state.practiceIndex); renderQuestion("challengeQuestion","challengeAnswer",activeQuestions("challenge"),state.challengeIndex); }
 function updateCourseList(){
     const wrap=document.getElementById("courseList"); 

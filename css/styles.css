@@ -58,8 +58,11 @@ header {
   background: var(--odd-focus);
   border: 2px solid var(--odd-border);
   border-radius: 0.35rem;
-  padding: 0.35rem 0.55rem;
+  padding: 0.45rem 0.75rem;
   font-weight: 700;
+  width: auto;
+  max-width: none;
+  white-space: nowrap;
 }
 
 .siteTitle {
@@ -118,10 +121,10 @@ textarea {
 
 button {
   padding: 0.6rem 0.85rem;
-  border: 2px solid var(--odd-border);
+  border: 2px solid var(--odd-accent-dark);
   border-radius: 0.55rem;
-  background: var(--odd-surface);
-  color: var(--odd-text);
+  background: var(--odd-accent);
+  color: #FFFFFF;
   cursor: pointer;
   margin: 0.25rem 0.25rem 0.25rem 0;
   font-weight: 700;
@@ -132,15 +135,16 @@ nav button,
 .card button,
 .contentBox button,
 p > button {
-  background: var(--odd-surface);
-  color: var(--odd-text);
+  background: var(--odd-accent);
+  color: #FFFFFF;
+  border-color: var(--odd-accent-dark);
 }
 
 button:hover,
 button:focus-visible {
-  background: var(--odd-accent);
+  background: var(--odd-accent-dark);
   color: #FFFFFF;
-  border-color: var(--odd-accent-dark);
+  border-color: var(--odd-border);
 }
 
 button[disabled] {
@@ -267,6 +271,17 @@ ul li {
   margin: 0.4rem 0;
 }
 
+.contentBox > p,
+.card > p,
+main > section > p {
+  max-width: 75ch;
+}
+
+.contentBox > p + p,
+.card > p + p {
+  margin-top: 1rem;
+}
+
 .help-text {
   font-style: italic;
   color: var(--odd-muted);
@@ -303,5 +318,10 @@ footer h2 {
   button {
     width: 100%;
     text-align: left;
+  }
+
+  .skipLinks a {
+    width: auto;
+    white-space: normal;
   }
 }
