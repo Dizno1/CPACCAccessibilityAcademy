@@ -1,4 +1,4 @@
-// CPACC Accessibility Academy modular data loader.
+// CPACC Accessible Academy modular data loader.
 // Assembles domain lesson files into the original window.CPACC_ACADEMY_DATA shape.
 (function () {
   var manifest = [
